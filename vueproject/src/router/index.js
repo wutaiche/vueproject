@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
+import Home from '@/modules/home'
+import Category from '@/modules/category'
 Vue.use(Router)
+
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
+    },
+    {
+      path:"/category",
+      name:"Category",
+      component:Category
     }
   ]
 })
