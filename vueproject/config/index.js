@@ -11,12 +11,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        'dshui': {
-            target:'http://www.dshui.cc',
-            changeOrigin: true,
-            pathRewrite: {
-                '^/dshui': ''
-            }
+        '/adwap': {
+            target:'http://www.dshui.cc/',
+            changeOrigin: true
+            // pathRewrite: {
+            //     '^/dshui': ''
+            // }
         }
 
     },

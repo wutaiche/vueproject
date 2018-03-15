@@ -7,6 +7,7 @@ import router from './router'
 import {Loadmore,Swipe, SwipeItem,Lazyload}  from "mint-ui"
 import dshHead from "./components/Head"
 import store  from "./store"
+import zepto from 'zepto'
 Vue.component("dsh-head",dshHead);
 
 Vue.use(Lazyload);
@@ -14,6 +15,7 @@ Vue.use(Lazyload);
 
 Vue.config.productionTip = false
 Vue.prototype.axios =axios;
+Vue.prototype.$ = zepto;
 
 Vue.component("dshui-loadmore",Loadmore)
 Vue.component("dshui-swip", Swipe);

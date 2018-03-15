@@ -9,7 +9,8 @@
  <div class="wrap">
   <div class="wrap-left">
   <ul>
-  <li v-for="(item,index) in category " :key="index" @click="getBrand(item.id)">
+  <li v-for="(item,index) in category "  :class="{'active':!index}" :key="index"
+         @click="getMyBrand(item.id,$event)" >
    {{item.name}}
   </li>
   
@@ -17,10 +18,10 @@
   </div>
   <div class="wrap-right">
   <ul class="clearfix">
-  <li  v-for="(item,index) in brand" :key="index" @click="getnum">
-     <img :src="item.imgUrl"/>
+    <router-link :to="{path:'product/productList', query: {ctgyId:item.id}}" tag="li"  v-for="(item,index) in brand" :key="index" >
+     <img v-lazy="item.imgUrl"/>
      <p>  {{item.name}}  </p>
-  </li>
+  </router-link>
   </ul>
   </div>
  </div>
@@ -43,14 +44,18 @@
    },
    methods:{
    	...mapActions(["getCategory","getBrand"]),
-   	getnum(){
-   		console.log(1);
+   	getMyBrand(id,event){
+   		 // $(this).addClass("active").siblings().removeClass("active");
+          $(event.currentTarget).addClass("active").siblings().removeClass("active");
+   		  this.getBrand(id);
    	}
+
    },
    mounted(){
 
    	    this.getCategory();
    	    this.getBrand(4);
+
    	    
    },
    updated(){
@@ -106,7 +111,13 @@
 		height:px2rem(50px);
 		line-height: px2rem(50px);
 		/*font-weight: 600;*/
-		font-size:px2rem(14px);
+		font-size:px2rem(12px);
+	}
+	li.active{
+	background: #fff;
+    border-left: 2px solid #000;
+    color: #000;
+    font-weight: 600;
 	}
 }
 .wrap-right{

@@ -32,6 +32,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: require.resolve('zepto'),
+        use: ['exports-loader?window.Zepto','script-loader']
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig

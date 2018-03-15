@@ -13,7 +13,7 @@
 <div class="wraper">
 <div class="swip-wraper">
 <dshui-swip :auto="4000">
-<dshui-swip-item  v-for ="img in imgs" >
+<dshui-swip-item  v-for ="(img,index) in imgs"  :key="index">
 <img  class="head-img" :src="img.img"/>
 </dshui-swip-item>
 </dshui-swip>
@@ -51,13 +51,13 @@
 <img src= "../assets/img/new_new_man.jpg"/>
 </div>
 <div class="activity2-wraper">
-<p  v-for="(item,index) in activityDate"  v-if="index<3">
+<p  v-for="(item,index) in activityDate" :key="index" v-if="index<3">
  <img :src = "item.img"/>
 </p>
 </div>
 <div class="new-goods-wraper">
   <ul>
-  <li v-for="(item,index) in activityDate" v-if="index>2">
+  <li v-for="(item,index) in activityDate" v-if="index>2" :key="index">
   <p class="new-goods-title">{{item.title}}</p>
   <p class="new-goods-subtitle">{{item.subtitle}}</p>
   <img  v-lazy="item.img">
@@ -69,11 +69,12 @@
   <p class="hot-sell-title">超值热卖</p>
  
   <ul>
-  <li v-for = "item in hotSellDate"  >
+  <router-link :to="{path:'activity/template3', query: {id:item.adid,title:item.title}}"  tag="li"
+  v-for = "(item,index) in hotSellDate" :key="index" >
   <img  v-lazy="item.img"/>
  <p class="new-goods-title">{{item.title}}</p>
   <p class="new-goods-subtitle">{{item.subtitle}}</p>
-  </li>
+  </router-link>
   </ul>
  
 </div>
